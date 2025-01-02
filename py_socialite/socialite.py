@@ -1,7 +1,9 @@
 from typing import Dict, Any
 from py_socialite.providers.google import GoogleProvider
-from py_socialite.config import SOCIAL_PROVIDERS
 from py_socialite.exceptions import SocialAuthError
+from importlib import import_module
+from dotenv import load_dotenv
+import os
 
 class Socialite:
     """Main class for handling social authentication."""
@@ -12,6 +14,21 @@ class Socialite:
             'google': GoogleProvider
         }
         self.selected_provider = None
+        
+        # Load environment variables
+        load_dotenv()
+        
+        # Get config path from environment variable
+        config_path = os.getenv('SOCIALITE_CONFIG_FILE', '')
+        
+        # Dynamically import the config
+        try:
+            self.config_module = import_module(config_path)
+            self.social_providers = getattr(self.config_module, 'SOCIAL_PROVIDERS', {})
+        except ImportError:
+            raise SocialAuthError(f"Could not import config from {config_path}")
+        except AttributeError:
+            raise SocialAuthError(f"SOCIAL_PROVIDERS not found in {config_path}")
 
     def provider(self, provider_name: str) -> 'Socialite':
         """
@@ -28,7 +45,7 @@ class Socialite:
             supported_providers = ", ".join(self._providers.keys())
             raise SocialAuthError(f"Provider '{provider_name}' not supported. Supported providers are: {supported_providers}")
 
-        config = SOCIAL_PROVIDERS.get(provider_name)
+        config = self.social_providers.get(provider_name)
         if not config:
             raise SocialAuthError(f"Configuration for {provider_name} not found")
 
