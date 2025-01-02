@@ -1,0 +1,2 @@
+class SocialAuthError(Exception):
+    pass 
