@@ -1,6 +1,7 @@
 from typing import Dict, Any
 from py_socialite.providers.google import GoogleProvider
 from py_socialite.providers.github import GitHubProvider
+from py_socialite.providers.dropbox import DropboxProvider
 from py_socialite.exceptions import SocialAuthError
 from importlib import import_module
 from dotenv import load_dotenv
@@ -13,7 +14,8 @@ class Socialite:
         """Initialize Socialite with supported providers."""
         self._providers = {
             'google': GoogleProvider,
-            'github': GitHubProvider
+            'github': GitHubProvider,
+            'dropbox': DropboxProvider
         }
         self.selected_provider = None
         
