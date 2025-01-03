@@ -33,7 +33,13 @@ SOCIAL_PROVIDERS = {
         'client_id': 'your-client-id',
         'client_secret': 'your-client-secret',
         'redirect_uri': 'your-callback-url'
-    }
+    },
+    'your_provider_name': {
+        'client_id': 'your-client-id',
+        'client_secret': 'your-client-secret',
+        'redirect_uri': 'your-callback-url'
+    },
+    
 }
 ```
 Set the configuration path in your environment:
@@ -96,6 +102,22 @@ py-socialite/
 - github
 - dropbox
 - x
+- facebook
+
+## Response sample data
+
+```bash
+{
+    "provider": "google",
+    "id": "1234567890",
+    "email": "example@example.com",
+    "name": "John Doe",
+    "avatar": "https://example.com/avatar.jpg",
+    "raw": {
+        .....
+    }
+}
+```
 
 ## Contributing
 
