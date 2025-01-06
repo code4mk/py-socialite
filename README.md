@@ -103,6 +103,7 @@ py-socialite/
 - dropbox
 - x
 - facebook
+- microsoft
 
 ## Response sample data
 
