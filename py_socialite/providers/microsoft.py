@@ -4,9 +4,9 @@ from ..exceptions import SocialAuthError
 from .base import SocialProvider
 
 class MicrosoftProvider(SocialProvider):
-    AUTH_URL = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
-    TOKEN_URL = "https://login.microsoftonline.com/common/oauth2/v2.0/token"
-    USER_INFO_URL = "https://graph.microsoft.com/v1.0/me"
+    AUTH_URL = f"https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize"
+    TOKEN_URL = f"https://login.microsoftonline.com/consumers/oauth2/v2.0/token"
+    USER_INFO_URL = f"https://graph.microsoft.com/v1.0/me"
 
     def get_auth_url(self) -> str:
         params = {

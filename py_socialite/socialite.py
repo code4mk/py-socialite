@@ -6,6 +6,7 @@ from py_socialite.providers.x import XProvider
 from py_socialite.providers.linkedin import LinkedInProvider
 from py_socialite.exceptions import SocialAuthError
 from py_socialite.providers.facebook import FacebookProvider
+from py_socialite.providers.microsoft import MicrosoftProvider
 from importlib import import_module
 from dotenv import load_dotenv
 import os
@@ -21,7 +22,8 @@ class Socialite:
             'dropbox': DropboxProvider,
             'x': XProvider,
             'linkedin': LinkedInProvider,
-            'facebook': FacebookProvider
+            'facebook': FacebookProvider,
+            'microsoft': MicrosoftProvider
         }
         self.selected_provider = None
         
