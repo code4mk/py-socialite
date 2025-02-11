@@ -13,7 +13,7 @@ class GoogleProvider(SocialProvider):
             'client_id': self.client_id,
             'redirect_uri': self.redirect_uri,
             'response_type': 'code',
-            'scope': 'openid email profile',
+            'scope': self.scope,
             'access_type': 'offline',
             'prompt': 'consent'
         }

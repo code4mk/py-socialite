@@ -4,16 +4,23 @@ from ..exceptions import SocialAuthError
 from .base import SocialProvider
 
 class MicrosoftProvider(SocialProvider):
-    AUTH_URL = f"https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize"
-    TOKEN_URL = f"https://login.microsoftonline.com/consumers/oauth2/v2.0/token"
-    USER_INFO_URL = f"https://graph.microsoft.com/v1.0/me"
+    """
+    Microsoft provider class.
+    """
+
+    AUTH_URL = "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize"
+    TOKEN_URL = "https://login.microsoftonline.com/consumers/oauth2/v2.0/token"
+    USER_INFO_URL = "https://graph.microsoft.com/v1.0/me"
 
     def get_auth_url(self) -> str:
+        """
+        Get the authorization URL for Microsoft authentication.
+        """
         params = {
             'client_id': self.client_id,
             'redirect_uri': self.redirect_uri,
             'response_type': 'code',
-            'scope': 'openid email profile User.Read',
+            'scope': self.scope,
             'response_mode': 'query'
         }
         
@@ -21,6 +28,9 @@ class MicrosoftProvider(SocialProvider):
         return f"{self.AUTH_URL}?{query_string}"
 
     def get_token(self, code: str) -> Dict[str, Any]:
+        """
+        Get the access token for Microsoft authentication.
+        """
         data = {
             'code': code,
             'client_id': self.client_id,
@@ -37,6 +47,10 @@ class MicrosoftProvider(SocialProvider):
         return response.json()
 
     def get_user_info(self, access_token: str) -> Dict[str, Any]:
+        """
+        Get the user information for Microsoft authentication.
+        """
+
         headers = {
             'Authorization': f'Bearer {access_token}',
             'Content-Type': 'application/json'

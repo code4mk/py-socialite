@@ -17,12 +17,14 @@ SOCIAL_PROVIDERS = {
     'google': {
         'client_id': 'your-client-id',
         'client_secret': 'your-client-secret',
-        'redirect_uri': 'your-callback-url'
+        'redirect_uri': 'your-callback-url',
+        'scope': 'openid email profile'
     },
     'github': {
         'client_id': 'your-client-id',
         'client_secret': 'your-client-secret',
-        'redirect_uri': 'your-callback-url'
+        'redirect_uri': 'your-callback-url',
+        'scope': 'read:user user:email'
     },
     'dropbox': {
         'client_id': 'your-client-id',
@@ -32,20 +34,36 @@ SOCIAL_PROVIDERS = {
     'x': {
         'client_id': 'your-client-id',
         'client_secret': 'your-client-secret',
-        'redirect_uri': 'your-callback-url'
+        'redirect_uri': 'your-callback-url',
+        'scope': 'tweet.read users.read follows.read offline.access'
     },
-    'your_provider_name': {
+    'linkedin': {
         'client_id': 'your-client-id',
         'client_secret': 'your-client-secret',
-        'redirect_uri': 'your-callback-url'
+        'redirect_uri': 'your-callback-url',
+        'scope': 'openid profile email'
     },
-    
+    'facebook': {
+        'client_id': 'your-client-id',
+        'client_secret': 'your-client-secret',
+        'redirect_uri': 'your-callback-url',
+        'scope': 'email public_profile'
+    },
+    'microsoft': {
+        'client_id': 'your-client-id',
+        'client_secret': 'your-client-secret',
+        'redirect_uri': 'your-callback-url',
+        'scope': 'openid email profile User.Read'
+    }
 }
 ```
 Set the configuration path in your environment:
 
 ```bash
-export SOCIALITE_CONFIG_PATH=/path/to/config.py
+export SOCIALITE_CONFIG_PATH="modules.common.config.socialite"
+
+# or add it to your .env file
+SOCIALITE_CONFIG_PATH='modules.common.config.socialite'
 ```
 
 ## Usage
@@ -104,6 +122,8 @@ py-socialite/
 - x
 - facebook
 - microsoft
+- linkedin
+
 
 ## Response sample data
 

@@ -13,7 +13,7 @@ class FacebookProvider(SocialProvider):
             'client_id': self.client_id,
             'redirect_uri': self.redirect_uri,
             'response_type': 'code',
-            'scope': 'email public_profile'
+            'scope': self.scope
         }
         
         query_string = '&'.join([f"{key}={value}" for key, value in params.items()])

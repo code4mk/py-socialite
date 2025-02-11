@@ -12,7 +12,7 @@ class GitHubProvider(SocialProvider):
         params = {
             'client_id': self.client_id,
             'redirect_uri': self.redirect_uri,
-            'scope': 'read:user user:email',  # GitHub specific scopes
+            'scope': self.scope
         }
         
         query_string = '&'.join([f"{key}={value}" for key, value in params.items()])

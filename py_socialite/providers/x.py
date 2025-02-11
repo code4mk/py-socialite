@@ -14,7 +14,7 @@ class XProvider(SocialProvider):
             'client_id': self.client_id,
             'redirect_uri': self.redirect_uri,
             'response_type': 'code',
-            'scope': 'tweet.read users.read follows.read offline.access',
+            'scope': self.scope,
             'state': 'state',  # You might want to generate a random state
             'code_challenge': 'challenge',  # Should be generated based on PKCE spec
             'code_challenge_method': 'plain'  # Consider using 'S256' for better security
