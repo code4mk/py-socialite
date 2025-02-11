@@ -8,10 +8,10 @@ pip install py-socialite
 
 ## Configuration
 
-Create a configuration file (e.g., config.py) with your OAuth credentials:
+Create a configuration file (e.g., socialite.py) with your OAuth credentials:
 
 ```python
-# config.py
+# socialite.py
 
 SOCIAL_PROVIDERS = {
     'google': {
