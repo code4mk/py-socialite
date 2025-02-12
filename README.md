@@ -140,6 +140,12 @@ py-socialite/
 }
 ```
 
+## Resources
+
+- [How to use py-socialite on django - medium](https://code4mk.medium.com/py-socialite-implement-on-django-and-drf-2b2531bdb6e9)
+- [How to use py-socialite on fastapi - medium](https://code4mk.medium.com/py-socialite-implement-on-fastapi-b1d585c7f915)
+
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
