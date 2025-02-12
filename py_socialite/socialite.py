@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from importlib import import_module
 from typing import Dict, Any
+from urllib.parse import quote
 
 from py_socialite.providers.google import GoogleProvider
 from py_socialite.providers.github import GitHubProvider
@@ -67,11 +68,16 @@ class Socialite:
         return self
 
     def get_auth_url(self) -> str:
-        """Get the authorization URL for the selected provider."""
+        """
+        Get the authorization URL for the selected provider.
+        
+        Args:
+            state: Optional state parameter to be passed to the provider. Will be URL encoded.
+        """
         if not self.selected_provider:
             raise SocialAuthError("No provider selected. Call provider() first.")
-            
-        return self.selected_provider.get_auth_url()
+                    
+        return quote(self.selected_provider.get_auth_url(), safe=':/?=&')
 
     def get_user(self, code: str) -> Dict[str, Any]:
         """
